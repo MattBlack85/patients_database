@@ -6,4 +6,6 @@ class Visit(models.Model):
     patient = models.ForeignKey(Patient)
     date = models.DateField()
     description = models.TextField()
-    
+
+    def __unicode__(self):
+        return self.date
