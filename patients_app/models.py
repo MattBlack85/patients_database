@@ -7,4 +7,4 @@ class Patient(models.Model):
     pub_date = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
-        return self.name, self.pesel
+        return self.name + " PESEL: " + str(self.pesel)
