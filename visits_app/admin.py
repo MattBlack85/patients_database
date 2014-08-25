@@ -1,3 +1,4 @@
 from django.contrib import admin
 
-# Register your models here.
+from visits_app.models import Visit
+admin.site.register(Visit)
