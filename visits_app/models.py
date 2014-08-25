@@ -8,4 +8,4 @@ class Visit(models.Model):
     description = models.TextField()
 
     def __unicode__(self):
-        return str(self.date)
+        return self.patient.name + " - " + str(self.date)
