@@ -1,6 +1,6 @@
 from django.contrib import admin
 
 from visits_app.models import Visit
-Class VisitAdmin(admin.ModelAdmin):
-    fields = ['description','patient']
+class VisitAdmin(admin.ModelAdmin):
+    fields = ['patient','description']
 admin.site.register(Visit, VisitAdmin)
