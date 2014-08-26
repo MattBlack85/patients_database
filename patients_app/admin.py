@@ -6,10 +6,13 @@ from visits_app.models import Visit #trial
 class VisitInline(admin.StackedInline): #trial
     model=Visit #trial
     extra=1 #trial
+    
 class PatientAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Personal data',{'fields':['pesel']}),
                  (None,{'fields':['name']}),
                                       ]
+    list_display = ('name', 'pesel', 'pub_date')
     inlines = [VisitInline]
+    
 admin.site.register(Patient,PatientAdmin)
