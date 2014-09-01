@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from patients_app.models import Patient
@@ -11,11 +11,7 @@ def index(request):
     return render(request, 'patients_app/index.html',context)    
 
 def edit(request, name):
-    try:
-        patient = Patient.objects.get(name=name)
-    except:
-        Patient.DoesNotExist:
-            raise Http404
+    patient = get_object_or_404(Patient, name=name)
     return render(request, 'patients_app/edit.html', {'patient':patient})    
     
     
