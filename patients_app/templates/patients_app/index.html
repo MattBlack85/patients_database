@@ -1,0 +1,9 @@
+{% if patients_list %}
+<ul>
+{% for p in patients_list %}
+<li><a href="/patients_app/{{p.id}}/">{{p.name}}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+<p>There are no patients in the database</p>
+{% endif %}
