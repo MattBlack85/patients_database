@@ -15,3 +15,6 @@ def index(request):
 def edit(request, name):
     return HttpResponse("edit patient %s" % name)
 
+def detail(request, name):
+    return HttpResponse("details of patients %s" % name)
+
