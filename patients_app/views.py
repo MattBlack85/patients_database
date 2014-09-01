@@ -4,5 +4,6 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse("you are in index")
 
-def edit(request,name):
-    return HttpResponse("you can edit the database now")
+def edit(request, name):
+    return HttpResponse("edit patient %s" % name)
+
