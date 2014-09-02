@@ -10,11 +10,11 @@ class VisitInline(admin.StackedInline):
 class PatientAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Personal data',{'fields':['pesel']}),
-                 (None,{'fields':['name']}),
+                 (None,{'fields':['first_name','second_name','last_name']}),
                                       ]
     #list_display = ('name', 'pesel')#I don't like the look so I cancel it
-    list_filter = ['name']
-    search_fields=['name']
+    list_filter = ['last_name']
+    search_fields=['last_name']
     inlines = [VisitInline]
     
 admin.site.register(Patient,PatientAdmin)

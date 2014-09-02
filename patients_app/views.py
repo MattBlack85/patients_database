@@ -10,8 +10,8 @@ def index(request):
     context = {'patients_list': patients_list}
     return render(request, 'patients_app/index.html',context)    
 
-def edit(request, name):
-    patient = get_object_or_404(Patient, name=name)
+def edit(request, last_name):
+    patient = get_object_or_404(Patient, name=last_name)
     return render(request, 'patients_app/edit.html', {'patient':patient})    
     
     
