@@ -1,7 +1,7 @@
 {% if patients_list %}
 <ul>
 {% for p in patients_list %}
-<li><a href="/patients_app/{{p.name}}/edit">{{p.name}}</a></li>
+<li><a href="/patients_app/{{p.pk}}/edit">{{p.pk}}</a></li>
 {% endfor %}
 </ul>
 {% else %}
