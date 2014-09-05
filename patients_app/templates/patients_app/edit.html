@@ -1,2 +1,11 @@
-{{patient}}
-{{prefetch_related}}
+{{ patient }}
+{% if visits %}
+<ul>
+{% for v in visits %}
+<li>{{v}}</li>
+
+{% endfor %}
+</ul>
+{% else %}
+<p>There are no visits for this patient</p>
+{% endif %}

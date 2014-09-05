@@ -13,8 +13,9 @@ def index(request):
 
 def edit(request,pk):
     patient = get_object_or_404(Patient,pk=pk)
-    visits = Visit.objects.select_related('patient').get(id=pk) #non funziona maledetto :P
-    return render(request, 'patients_app/edit.html', {'patient' : patient, 'visits': visits})    
+    visits = Visit.objects.filter(patient=Patient.objects.get(pk=pk))
+    #visits = Visit.objects.select_related('patient').get(pk=pk) #non funziona maledetto :P
+    return render(request, 'patients_app/edit.html', {'patient':patient, 'visits': visits})  
     
     
 
