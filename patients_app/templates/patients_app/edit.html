@@ -3,12 +3,29 @@
 <ul>
 {% for v in visits %}
 <li>{{v}}</li>
-{{v_form}}</li>
+
+
+<v_form method="post">{% csrf_token %}
+
+    
+    <input id="description" type="text" name="description" value="{{ v.description }}">
+
+    <button type="submit" name="v_button">Save Changes</button>
+</v_form>
+
+
 {% endfor %}
 </ul>
 {% else %}
 <p>There are no visits for this patient</p>
+<v_form method="post">{% csrf_token %}
+
+    
+    <input id="description" type="text" name="description" value="{{ v.description }}">
+
+    <button type="submit" name="v_button">Save Changes</button>
+</v_form>
 {% endif %}
 
 
-<
+
