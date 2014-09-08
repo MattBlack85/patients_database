@@ -5,4 +5,5 @@ from visits_app.models import Visit
 class VisitForm(forms.ModelForm):
     class Meta:
         model = Visit
-        exclude = ['patient']
+        exclude = ['date','patient']
+        
