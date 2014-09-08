@@ -17,17 +17,15 @@ def edit(request,pk):
     #visits = Visit.objects.filter(patient=Patient.objects.get(pk=pk))
     
     visits = Visit.objects.select_related('patient').filter(patient=patient)
-    
-    return render(request, 'patients_app/edit.html', {'patient':patient, 'visits': visits})  
+          
     v_form = VisitForm(request.POST or None)
     if v_form.is_valid():
         description = v_form.save(commit=False)
         description.post = post
         description.save
-        return redirect(request.path)
-    return render
         
-    
+        
+    return render(request, 'patients_app/edit.html', {'patient':patient, 'visits': visits, 'v_form': v_form})    
 
 
 
