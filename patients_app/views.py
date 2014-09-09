@@ -26,6 +26,3 @@ def edit(request,pk):
         
         
     return render(request, 'patients_app/edit.html', {'patient':patient, 'visits': visits, 'v_form': v_form})    
-
-
-
