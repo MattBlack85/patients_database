@@ -5,7 +5,7 @@
 <li>{{v}}</li>
 
 
-<v_form action = "/visit/" method="post">{% csrf_token %}
+<v_form action = v_action method="post">{% csrf_token %}
 
     
     <input id=v.pk type="text" name="visit" value="{{ v.description }}">
@@ -19,7 +19,7 @@
 </ul>
 {% else %}
 <p>There are no visits for this patient</p>
-form action = "/visit/" method="post">{% csrf_token %}
+form action = = v_action method="post">{% csrf_token %}
 
     
     <input id="visit" type="text" name="visit">
