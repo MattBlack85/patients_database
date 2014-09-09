@@ -23,7 +23,12 @@ def edit(request,pk):
         description = v_form.save(commit=False)
         description.post = post
         description.save
-        
-        
+     
     return render(request, 'patients_app/edit.html', {'patient':patient, 'visits': visits, 'v_form': v_form})    
-#ora vedi?
+
+def description(request,pk):
+    visit = get_object_or_404(Visit,pk=pk)
+    description = visit.description
+    return render(request, 'patients_app/description.html',{'description':description})
+    
+

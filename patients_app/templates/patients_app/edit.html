@@ -5,26 +5,26 @@
 <li>{{v}}</li>
 
 
-<v_form method="post">{% csrf_token %}
+<v_form action = "/description/" method="post">{% csrf_token %}
 
     
-    <input id="description" type="text" name="description" value="{{ v.description }}">
+    <input id=v.pk type="text" name="description" value="{{ v.description }}">
 
     <button type="submit" name="v_button">Save Changes</button>
-</v_form>
+</v_form>
 
 
 {% endfor %}
 </ul>
 {% else %}
 <p>There are no visits for this patient</p>
-<v_form method="post">{% csrf_token %}
+form action = "/description/" method="post">{% csrf_token %}
 
     
     <input id="description" type="text" name="description" value="{{ v.description }}">
 
     <button type="submit" name="v_button">Save Changes</button>
-</v_form>
+</form>
 {% endif %}
 
 
