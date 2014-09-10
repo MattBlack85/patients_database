@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.template import RequestContext, loader
-from patients_app.models import Patient
+from .models import Patient
 from visits_app.models import Visit
 from visits_app.forms import VisitForm
 from django.http import Http404
@@ -13,9 +13,10 @@ def index(request):
     return render(request, 'patients_app/index.html',context)    
 
 def edit(request,pk):
+    print request.POST
     patient = get_object_or_404(Patient,pk=pk)
     #visits = Visit.objects.filter(patient=Patient.objects.get(pk=pk))
-    v_action = "/patients_app/" + str(patient.pk) +"/edit/"
+    #v_action = "/patients_app/" + str(patient.pk) +"/edit/"
     visits = Visit.objects.select_related('patient').filter(patient=patient)
           
     v_form = VisitForm(request.POST or None)
