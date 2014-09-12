@@ -8,7 +8,7 @@
     {% csrf_token %}
     <input type="hidden" name="patient" value="{{ patient.pk }}">
     <input type="hidden" name="visit" value="{{ v.pk }}">
-    <input type="text" name="description" value="{{ v.description }}" height="100" width="200">
+    <input type="text" name="description" value="{{ v.description }}" height="1000" width="200">
     <button type="submit">Save Changes</button>
   </form>
   {% endfor %}
