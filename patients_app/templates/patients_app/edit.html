@@ -1,4 +1,7 @@
 {{ patient }}
+<form action = {% url 'index' %} method = "get">
+</form>
+
 {% if visits %}
 <ul>
   {% for v in visits %}
@@ -27,3 +30,4 @@
   <button type="submit">Save Changes</button>
 </form>
 {% endif %}
+
