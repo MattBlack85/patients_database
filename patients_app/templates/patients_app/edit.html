@@ -1,6 +1,5 @@
 {{ patient }}
 <button onclick="window.location.href='/patients_app/'">Back to list</button>
-
 {% if visits %}
 <ul>
   {% for v in visits %}
@@ -9,14 +8,14 @@
     {% csrf_token %}
     <input type="hidden" name="patient" value="{{ patient.pk }}">
     <input type="hidden" name="visit" value="{{ v.pk }}">
-    <input type="text" name="description" value="{{ v.description }}">
+    <input type="text" name="description" value="{{ v.description }}" width: 300px height: 10em>
     <button type="submit">Save Changes</button>
   </form>
   {% endfor %}
   <form "{% url 'edit' patient.pk %}" method="post">
     {% csrf_token %}
     <input type="hidden" name="patient" value="{{ patient.pk }}">
-    <input type="text" name="description">
+    <input type="text" name="description" width: 300px height: 10em>
     <button type="submit">Save Changes</button>
   </form>
 </ul>
@@ -25,7 +24,7 @@
 <form action="{% url 'edit' patient.pk %}" method="post">
   {% csrf_token %}
   <input type="hidden" name="patient" value="{{ patient.pk }}">
-  <input type="text" name="description">
+  <input type="text" name="description" width: 300px height: 10em>
   <button type="submit">Save Changes</button>
 </form>
 {% endif %}
