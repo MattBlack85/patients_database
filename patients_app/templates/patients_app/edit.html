@@ -1,34 +1,30 @@
 {{ patient }}
 {% if visits %}
 <ul>
-{% for v in visits %}
-<li>{{v}}</li>
-
-
-<form action = "{% url 'edit' patient.pk %}" method="post">
-{% csrf_token %}
-
-    
-    <input id=v.pk type="text" name="visit" value="{{ v.description }}">
-
-    <button type="submit" name="v_button">Save Changes</button>
-
-</form>
-
-
-{% endfor %}
+  {% for v in visits %}
+  <li>{{v}}</li>
+  <form action = "{% url 'edit' patient.pk %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="patient" value="{{ patient.pk }}">
+    <input type="hidden" name="visit" value="{{ v.pk }}">
+    <input type="text" name="description" value="{{ v.description }}">
+    <button type="submit">Save Changes</button>
+  </form>
+  {% endfor %}
+  <form "{% url 'edit' patient.pk %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="patient" value="{{ patient.pk }}">
+    <input type="text" name="description">
+    <button type="submit">Save Changes</button>
+  </form>
 </ul>
 {% else %}
-
 <p>There are no visits for this patient</p>
-
-<form action = 'patients_app' patient.pk method="post">
-{% csrf_token %}
-
-    
-    <input id= v.pk type="text" name="visit">
-
-    <button type="submit" name="v_button">Save Changes</button>
+<form action="{% url 'edit' patient.pk %}" method="post">
+  {% csrf_token %}
+  <input type="hidden" name="patient" value="{{ patient.pk }}">
+  <input type="text" name="description">
+  <button type="submit">Save Changes</button>
 </form>
 {% endif %}
 
