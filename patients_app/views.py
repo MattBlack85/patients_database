@@ -15,17 +15,18 @@ def index(request):
 def edit(request, pk):
     patient = get_object_or_404(Patient, pk=pk)
     if request.method == 'POST':
-        patient_id = request.POST['patient']
-        new_first = request.POST['first_name']
-        new_second = request.POST['second_name']
-        new_last = request.POST['last_name']
-        new_pesel = request.POST['pesel']
-        old_patient = patient
-        old_patient.first_name = new_first
-        old_patient.second_name = new_second
-        old_patient.last_name = new_last
-        old_patient.pesel = new_pesel
-        old_patient.save(commit=True)
+        if request.POST.get('patient'):
+            patient_id = request.POST['patient']
+            new_first = request.POST['first_name']
+            new_second = request.POST['second_name']
+            new_last = request.POST['last_name']
+            new_pesel = request.POST['pesel']
+            old_patient = patient
+            old_patient.first_name = new_first
+            old_patient.second_name = new_second
+            old_patient.last_name = new_last
+            old_patient.pesel = new_pesel
+            old_patient.save(commit=True)
         
     visits = Visit.objects.select_related('patient').filter(patient=patient)
     if request.method == 'POST':
