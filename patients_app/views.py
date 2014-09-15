@@ -14,6 +14,19 @@ def index(request):
 
 def edit(request, pk):
     patient = get_object_or_404(Patient, pk=pk)
+    if request.method == 'POST':
+        patient_id = request.POST['patient']
+        new_first = request.POST['first_name']
+        new_second = request.POST['second_name']
+        new_last = request.POST['last_name']
+        new_pesel = request.POST['pesel']
+        old_patient = patient
+        old_patient.first_name = new_first
+        old_patient.second_name = new_second
+        old_patient.last_name = new_last
+        old_patient.pesel = new_pesel
+        old_patient.save(commit=True)
+        
     visits = Visit.objects.select_related('patient').filter(patient=patient)
     if request.method == 'POST':
         if request.POST.get('visit'):  # The visit exists
@@ -21,10 +34,10 @@ def edit(request, pk):
             new_description = request.POST['description']
             old_visit = patient.visit_set.get(pk=visit_id)
             old_visit.description = new_description
-            old_visit.save()
+            old_visit.save(commit=True)
         else:  # We got a new visit
             v_form = VisitForm(request.POST)
             if v_form.is_valid():
-                v_form.save()
+                v_form.save(commit=True)
             return render(request, 'patients_app/edit.html', {'patient':patient, 'visits': visits, 'v_form': v_form})
     return render(request, 'patients_app/edit.html', {'patient':patient, 'visits': visits, 'v_form': VisitForm()})
