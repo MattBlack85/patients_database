@@ -1,12 +1,4 @@
-<form action = "{% url 'edit' patient.pk %}" method="post"
-{% csrf_token %}
-<input type="text" name="first name" value="{{patient.first_name}}">
-<input type="text" name="second name" value="{{patient.second_name}}">
-<input type="text" name="last name" value="{{patient.last_name}}">
-<input type="text" name="PESEL" value="{{patient.pesel}}">
-<button type="submit">Save Changes</button>
-</form>
-<button onclick="window.location.href='/patients_app/'">Back to list</button>
+{{patient}}
 
 {% if visits %}
 <ul>
