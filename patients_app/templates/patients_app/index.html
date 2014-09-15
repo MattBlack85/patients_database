@@ -7,3 +7,11 @@
 {% else %}
 <p>There are no patients in the database</p>
 {% endif %}
+<form action = "{% url 'edit' patient.pk %}" method="post"
+{% csrf_token %}
+<input type="text" name="first name">
+<input type="text" name="second name">
+<input type="text" name="last name">
+<input type="text" name="PESEL">
+<button type="submit">Save Changes</button>
+</form>

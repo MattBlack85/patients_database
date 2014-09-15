@@ -5,12 +5,19 @@ from .models import Patient
 from visits_app.models import Visit
 from visits_app.forms import VisitForm
 from django.http import Http404
-
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
 
 def index(request):
     patients_list = Patient.objects.order_by('-last_name')
     context = {'patients_list' : patients_list}
-    return render(request, 'patients_app/index.html', context)
+    if request.method == 'POST':
+        if not request.POST.get('patient'):#the patient does not exist
+            p_form = PatientForm(request.POST)
+            if p_form.is_valid():
+                p_form.save(commit=True)
+            
+    return render(request, 'patients_app/index.html', {'patients_list':patients_list, 'p_form':p_form})
 
 def edit(request, pk):
     patient = get_object_or_404(Patient, pk=pk)
