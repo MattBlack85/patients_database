@@ -2,8 +2,39 @@
 <ul>
 {% for p in patients_list %}
 <li><a href="/patients_app/{{p.pk}}/edit">{{p}}</a></li>
+<form action = "{% url 'index' %}" method="post">
+{% csrf_token %}
+<input type="hidden" name="patient" value="{{ p.pk }}">
+<input type="text" name="first_name" value="{{ p.first_name }}">
+<input type="text" name="second_name" value="{{ p.second_name }}">
+<input type="text" name="last_name" value="{{ p.last_name }}">
+<input type="text" name="pesel" value="{{ p.pesel }}">
+<button type="submit">Save Changes</button>
+</form>
 {% endfor %}
+<p>Add a new patient</p>
+<p>First name - Middle Name - Last Name - PESEL</p>
+<form "{% url 'index' %}" method="post">
+{% csrf_token %}
+<input type="hidden" name="patient">
+<input type="text" name="first_name">
+<input type="text" name="second_name">
+<input type="text" name="last_name">
+<input type="text" name="pesel">
+<button type="submit">Save Changes</button>
+</form>
 </ul>
 {% else %}
 <p>There are no patients in the database</p>
+<p>Add a new patient</p>
+<p>First name - Middle Name - Last Name - PESEL</p>
+<form action = "{% url 'index' %}" method="post">
+{% csrf_token %}
+<input type="hidden" name="patient">
+<input type="text" name="first_name">
+<input type="text" name="second_name">
+<input type="text" name="last_name">
+<input type="text" name="pesel">
+<button type="submit">Save Changes</button>
+</form>
 {% endif %}
