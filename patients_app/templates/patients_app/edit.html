@@ -1,8 +1,11 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static '/style.css' %}" />
 {{patient}}
 <button onclick="window.location.href='/patients_app/'">Back to list</button>
 {% if visits %}
 <ul>
   {% for v in visits %}
+   <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
   <li>{{v}}</li>
   <form action = "{% url 'edit' patient.pk %}" method="post">
     {% csrf_token %}
