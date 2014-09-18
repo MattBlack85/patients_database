@@ -9,6 +9,7 @@
   <li>{{v}}</li>
   <form action = "{% url 'edit' patient.pk %}" method="post">
     {% csrf_token %}
+    <input id="f">
     <input type="hidden" name="patient" value="{{ patient.pk }}">
     <input type="hidden" name="visit" value="{{ v.pk }}">
     <input type="text" name="description" value="{{ v.description }}">
