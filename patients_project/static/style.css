@@ -1,5 +1,7 @@
-img {
-    color: green;
-height:100px;
-width:1000px;
+input[type=form]
+{
+
+    	color: green;
+	height:100px;
+	width:1000px;
 }
