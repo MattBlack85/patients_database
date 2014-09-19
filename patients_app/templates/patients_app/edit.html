@@ -1,4 +1,6 @@
+{% extends "base.html" %}
 {% load staticfiles %}
+{% block content %}
 <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}" />
 {{patient}}
 <button onclick="window.location.href='/patients_app/'">Back to list</button>
@@ -9,7 +11,7 @@
   <li>{{v}}</li>
   <form action = "{% url 'edit' patient.pk %}" method="post">
     {% csrf_token %}
-    <input id="f">
+    <form id="f">
     <input type="hidden" name="patient" value="{{ patient.pk }}">
     <input type="hidden" name="visit" value="{{ v.pk }}">
     <input type="text" name="description" value="{{ v.description }}">
@@ -32,4 +34,4 @@
   <button type="submit">Save Changes</button>
 </form>
 {% endif %}
-
+{% endblock %}
